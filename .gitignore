@@ -675,6 +675,7 @@ fabric.properties
 # End of https://www.toptal.com/developers/gitignore/api/csharp,visualstudio,visualstudiocode,rider
 .continue/
 .idea/
+.templace.config/
 .vs/
 CakeBuild/CakeBuild.csproj
 krpgfantasy/krpgfantasy.csproj
