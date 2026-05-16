@@ -676,3 +676,5 @@ fabric.properties
 .continue/
 .idea/
 .vs/
+CakeBuild/CakeBuild.csproj
+krpgfantasy/krpgfantasy.csproj
