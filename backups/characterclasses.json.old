@@ -1,0 +1,69 @@
+[
+	{
+		"enabled": true,
+		"code": "commoner",
+		"traits": [],
+		"gear": [
+			{ "type": "item", "code": "clothes-upperbody-commoner-shirt" },
+			{ "type": "item", "code": "clothes-upperbodyover-commoner-coat" },
+			{ "type": "item", "code": "clothes-lowerbody-commoner-trousers" },
+			{ "type": "item", "code": "clothes-foot-commoner-boots" },
+			{ "type": "item", "code": "clothes-hand-commoner-gloves" }
+		]
+	},
+  {
+    "code": "cleric",
+    "traits": ["divinemagic"],
+		"gear": [
+			{ "type": "item", "code": "clothes-upperbody-commoner-shirt" },
+			{ "type": "item", "code": "clothes-upperbodyover-commoner-coat" },
+			{ "type": "item", "code": "clothes-lowerbody-commoner-trousers" },
+			{ "type": "item", "code": "clothes-foot-commoner-boots" },
+			{ "type": "item", "code": "clothes-hand-commoner-gloves" }
+		]
+  },
+  {
+    "code": "fighter",
+    "traits": ["soldier", "toughness"],
+		"gear": [
+			{ "type": "item", "code": "clothes-upperbody-commoner-shirt" },
+			{ "type": "item", "code": "clothes-upperbodyover-commoner-coat" },
+			{ "type": "item", "code": "clothes-lowerbody-commoner-trousers" },
+			{ "type": "item", "code": "clothes-foot-commoner-boots" },
+			{ "type": "item", "code": "clothes-hand-commoner-gloves" }
+		]
+  },
+  {
+    "code": "ranger",
+    "traits": ["bowyer", "focused", "woodlandstride"],
+		"gear": [
+			{ "type": "item", "code": "clothes-upperbody-commoner-shirt" },
+			{ "type": "item", "code": "clothes-upperbodyover-commoner-coat" },
+			{ "type": "item", "code": "clothes-lowerbody-commoner-trousers" },
+			{ "type": "item", "code": "clothes-foot-commoner-boots" },
+			{ "type": "item", "code": "clothes-hand-commoner-gloves" }
+		]
+  },
+  {
+    "code": "rogue",
+    "traits": ["fleetfooted", "trackless"],
+		"gear": [
+			{ "type": "item", "code": "clothes-upperbody-commoner-shirt" },
+			{ "type": "item", "code": "clothes-upperbodyover-commoner-coat" },
+			{ "type": "item", "code": "clothes-lowerbody-commoner-trousers" },
+			{ "type": "item", "code": "clothes-foot-commoner-boots" },
+			{ "type": "item", "code": "clothes-hand-commoner-gloves" }
+		]
+  },
+  {
+    "code": "wizard",
+    "traits": [ "arcanemagic" ],
+		"gear": [
+			{ "type": "item", "code": "clothes-upperbody-commoner-shirt" },
+			{ "type": "item", "code": "clothes-upperbodyover-commoner-coat" },
+			{ "type": "item", "code": "clothes-lowerbody-commoner-trousers" },
+			{ "type": "item", "code": "clothes-foot-commoner-boots" },
+			{ "type": "item", "code": "clothes-hand-commoner-gloves" }
+		]
+  }
+]

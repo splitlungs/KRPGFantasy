@@ -1,0 +1,10 @@
+{
+  "type": "code",
+  "modid": "krpgfantasy",
+  "name": "KRPG Fantasy",
+  "authors": ["BloodThunder"],
+  "description": "DnD style class system based for the KRPG ecosystem.",
+  "version": "0.0.1",
+  "dependencies": {
+  }
+}

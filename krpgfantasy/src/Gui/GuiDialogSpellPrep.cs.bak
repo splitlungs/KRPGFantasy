@@ -1,0 +1,216 @@
+/*
+using System;
+using System.Collections.Generic;
+using Vintagestory.API.Client;
+using Vintagestory.API.Common;
+using Vintagestory.API.MathTools;
+using Vintagestory.API.Config;
+using Vintagestory.API.Util;
+using System.Runtime.CompilerServices;
+
+namespace KRPGLib.Fantasy
+{
+    /// <summary>
+    /// GUI used by players to prepare the spells/abilities they want to have
+    /// available until the next reset.  
+    /// Left column – list of spell‑class “pseudo‑items” that can be dragged.
+    /// Middle / right columns – slots where the dragged abilities are placed.
+    /// Bottom – Apply and Cancel buttons.
+    /// </summary>
+    public class GuiDialogSpellPrep : GuiDialog
+    {
+        public override string ToggleKeyCombinationCode => "krpgspellprep";
+        // --------------------------------------------------------------------
+        // Configurable constants – tweak to change layout / number of slots
+        // --------------------------------------------------------------------
+        private const int SlotsPerColumn   = 6;   // how many ability slots per column
+        private const int SlotSize         = 48;  // pixel size of each ItemSlot
+        private const int Padding          = 8;   // space between UI elements
+
+        // --------------------------------------------------------------------
+        // Runtime fields
+        // --------------------------------------------------------------------
+        private readonly IPlayer player;
+
+        // The “spell class” pseudo‑items that can be dragged onto the ability slots.
+        // In a real mod you would fill this list from your Spell database.
+        private readonly List<ItemStack> spellClassItems = new List<ItemStack>();
+
+        // Ability slots (middle + right columns).  The array index is used as the
+        // WatchedAttribute key for the prepared spell id.
+        private readonly ItemSlot[] abilitySlots;
+
+        private IInventory abilityInv;
+
+        // --------------------------------------------------------------------
+        // Construction
+        // --------------------------------------------------------------------
+        public GuiDialogSpellPrep(ICoreClientAPI capi) : base(capi)
+        {
+            this.capi   = capi;
+            this.player = capi.World.Player;
+
+            // ------------------------------------------------------------
+            // 1️⃣  Build the list of spell‑class “pseudo‑items”.
+            // ------------------------------------------------------------
+            BuildSpellClassItems();
+
+            // ------------------------------------------------------------
+            // 2️⃣  Create the ability slots (middle + right columns).
+            // ------------------------------------------------------------
+            abilitySlots = new ItemSlot[SlotsPerColumn * 2];
+            for (int i = 0; i < abilitySlots.Length; i++)
+            {
+                // Empty slots – they will accept any ItemStack that implements
+                // the ISpellItem interface (or simply any ItemStack that you
+                // decide is a valid ability).
+                abilitySlots[i] = new ItemSlot(1);
+                abilitySlots[i].MaxSlotStackSize = 1;
+            }
+
+            // ------------------------------------------------------------
+            // 3️⃣  Build the actual GUI composition.
+            // ------------------------------------------------------------
+            ComposeDialog();
+        }
+
+        // --------------------------------------------------------------------
+        // Populate the left‑hand list with draggable pseudo‑items.
+        // --------------------------------------------------------------------
+        private void BuildSpellClassItems()
+        {
+            // In a full implementation you would query a SpellRegistry.
+            // For this example we create three dummy items.
+            // The Item class must exist in your mod’s assets (e.g. "spellclass-*
+            // ").  Here we only set the display name – the texture is taken from
+            // the underlying item definition.
+            var dummy = new ItemStack(capi.World.GetItem(new AssetLocation("game:paper")));
+
+            dummy.StackSize = 1;
+            dummy.Attributes.SetString("spellclass", "wizard");
+            dummy.SetName("Wizard", true);
+            spellClassItems.Add(dummy);
+
+            dummy = dummy.Clone();
+            dummy.Attributes.SetString("spellclass", "cleric");
+            dummy.SetName("Cleric", true);
+            spellClassItems.Add(dummy);
+
+            dummy = dummy.Clone();
+            dummy.Attributes.SetString("spellclass", "bard");
+            dummy.SetName("Bard", true);
+            spellClassItems.Add(dummy);
+        }
+
+        // --------------------------------------------------------------------
+        // Build the dialog UI.
+        // --------------------------------------------------------------------
+        private void ComposeDialog()
+        {
+            // Root composer
+            var composer = capi.Gui.CreateCompo("gui-spell-prep", ElementBounds.Fixed(600, 400))
+                .AddDialogTitleBar(Lang.Get("krpgfantasy:gui-spell-prep"));
+
+            // ----------------------------------------------------------------
+            // LEFT – scrollable list of spell‑class items (drag source)
+            // ----------------------------------------------------------------
+            var leftPanel = composer.BeginChildElements(width: 180);
+            leftPanel.AddStaticText(Lang.Get("krpgfantasy:available-spell-classes"), font: CairoFont.WhiteSmallText(), margin: new double[] { 0, 0, 0, Padding });
+
+            // Scrollable area so the list can grow beyond the visible space.
+            var scroll = leftPanel.BeginScrollView(width: 180, height: 300, elementId: "spellClassScroll");
+            foreach (var stack in spellClassItems)
+            {
+                // Each entry is an ItemSlot that the player can drag.
+                scroll.AddItemSlot(stack, SlotSize, (e) => e.IsDragDropEnabled = true);
+                scroll.AddHorizontalSeparator();
+            }
+            leftPanel.EndScrollView();
+            composer.EndChildElements();
+
+            // ----------------------------------------------------------------
+            // MIDDLE & RIGHT – ability slots (drop targets)
+            // ----------------------------------------------------------------
+            var slotsPanel = composer.BeginChildElements(width: 380);
+            slotsPanel.AddStaticText(Lang.Get("krpgfantasy:prepared-abilities"), font: CairoFont.WhiteSmallText(), margin: new double[] { 0, 0, 0, Padding });
+
+            // Two columns, each with SlotsPerColumn rows.
+            for (int col = 0; col < 2; col++)
+            {
+                var colComp = slotsPanel.BeginChildElements(width: 180);
+                for (int row = 0; row < SlotsPerColumn; row++)
+                {
+                    int idx = col * SlotsPerColumn + row;
+                    colComp.AddItemSlot(abilitySlots[idx], SlotSize, (e) =>
+                    {
+                        // Enable drag‑and‑drop and visual feedback.
+                        e.IsDragDropEnabled = true;
+                        e.OnItemSlotModified = (slot) => OnAbilitySlotChanged(idx, slot);
+                    });
+                }
+                slotsPanel.EndChildElements();
+                if (col == 0) slotsPanel.AddHorizontalSeparator(); // visual separator between the two columns
+            }
+            composer.EndChildElements();
+
+            // ----------------------------------------------------------------
+            // BOTTOM – Apply / Cancel buttons
+            // ----------------------------------------------------------------
+            composer.BeginChildElements()
+                .AddButton(Lang.Get("Apply"), OnApplyClicked, ElementBounds.Fixed(0, 120), CairoFont.WhiteSmallText())
+                .AddButton(Lang.Get("Cancel"), OnCancelClicked, ElementBounds.Fixed( 64, 120), CairoFont.WhiteSmallText())
+                .EndChildElements();
+
+            // ----------------------------------------------------------------
+            // Finalise the dialog
+            // ----------------------------------------------------------------
+            SingleComposer = composer;
+        }
+
+        // --------------------------------------------------------------------
+        // Title‑bar close (same as Cancel)
+        // --------------------------------------------------------------------
+        private void OnTitleBarClose()
+        {
+            TryClose();
+        }
+
+        // --------------------------------------------------------------------
+        // Called when a prepared ability slot changes – you can store the
+        // selection in a WatchedAttribute or a custom player data object.
+        // --------------------------------------------------------------------
+        private void OnAbilitySlotChanged(int slotIndex, ItemSlot slot)
+        {
+            // Example: store the spell id (or class) in a WatchedAttribute so
+            // the server can read it later.
+            string spellId = slot?.Itemstack?.Attributes?.GetString("spellid") ?? "";
+            player.Entity.WatchedAttributes.SetString($"spellPrep-{slotIndex}", spellId);
+        }
+
+        // --------------------------------------------------------------------
+        // Apply button – persist the preparation and close the dialog.
+        // --------------------------------------------------------------------
+        private bool OnApplyClicked()
+        {
+            // Here you would push the prepared abilities to whatever system
+            // actually governs spell usage (e.g. a SpellManager component).
+            // For the demo we just write a log entry.
+            // capi.ChatMessageGroups.GetOrCreate("system").AddMessage(Lang.Get("Spells prepared!"));
+            TryClose();
+            return true;
+        }
+
+        // --------------------------------------------------------------------
+        // Cancel button – discard any changes and close.
+        // --------------------------------------------------------------------
+        private bool OnCancelClicked()
+        {
+            // Reset the slots to their original state (if you saved a snapshot
+            // before opening the dialog you could restore it here).
+            foreach (var slot in abilitySlots) slot.TakeOutWhole();
+            TryClose();
+            return true;
+        }
+    }
+}
+*/

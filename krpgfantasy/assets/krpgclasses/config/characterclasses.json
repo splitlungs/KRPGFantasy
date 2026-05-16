@@ -1,0 +1,79 @@
+[
+  {
+    "enabled": true,
+    "code": "artificer",
+    "traits": [],
+    "gear": [
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "barbarian",
+    "traits": [],
+    "gear": [
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "bard",
+    "traits": [],
+    "gear": [
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "cleric",
+    "traits": [],
+    "gear": [
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "druid",
+    "traits": [],
+    "gear": [
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "fighter",
+    "traits": [],
+    "gear": [
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "monk",
+    "traits": [],
+    "gear": [
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "paladin",
+    "traits": [],
+    "gear": [
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "ranger",
+    "traits": [],
+    "gear": [
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "rogue",
+    "traits": [],
+    "gear": [
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "wizard",
+    "traits": [],
+    "gear": [
+    ]
+  }
+]

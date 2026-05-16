@@ -1,0 +1,152 @@
+[
+  {
+    "enabled": true,
+    "code": "artificer",
+    "traits": ["tinkerer","inventive","precise","technical"],
+    "gear": [
+      { "type": "item", "code": "clothes-shoulder-artificer-apron" },
+      { "type": "item", "code": "clothes-upperbody-artificer-vest" },
+      { "type": "item", "code": "clothes-lowerbody-artificer-pants" },
+      { "type": "item", "code": "clothes-foot-artificer-boots" },
+      { "type": "item", "code": "clothes-hand-artificer-gloves" }
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "barbarian",
+    "traits": ["hardy","aggressive","fleetfooted","berserker","farsighted"],
+    "gear": [
+      { "type": "item", "code": "clothes-shoulder-barbarian-fur" },
+      { "type": "item", "code": "clothes-upperbody-barbarian-tunic" },
+      { "type": "item", "code": "clothes-lowerbody-barbarian-leggings" },
+      { "type": "item", "code": "clothes-foot-barbarian-boots" },
+      { "type": "item", "code": "clothes-hand-barbarian-gauntlets" }
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "bard",
+    "traits": ["charismatic","musical","resourceful","fleetfooted","farsighted"],
+    "gear": [
+      { "type": "item", "code": "clothes-head-bard-cape" },
+      { "type": "item", "code": "clothes-shoulder-bard-shouldercloth" },
+      { "type": "item", "code": "clothes-upperbody-bard-shirt" },
+      { "type": "item", "code": "clothes-upperbodyover-bard-coat" },
+      { "type": "item", "code": "clothes-lowerbody-bard-trousers" },
+      { "type": "item", "code": "clothes-foot-bard-boots" },
+      { "type": "item", "code": "clothes-hand-bard-gloves" }
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "cleric",
+    "traits": ["devout","healer","farsighted","spiritual","resourceful"],
+    "gear": [
+      { "type": "item", "code": "clothes-head-cleric-halo" },
+      { "type": "item", "code": "clothes-shoulder-cleric-mantle" },
+      { "type": "item", "code": "clothes-upperbody-cleric-robe" },
+      { "type": "item", "code": "clothes-lowerbody-cleric-leggings" },
+      { "type": "item", "code": "clothes-foot-cleric-sandals" },
+      { "type": "item", "code": "clothes-hand-cleric-gloves" }
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "druid",
+    "traits": ["nature‑affinity","shapeshifter","farsighted","claustrophobic"],
+    "gear": [
+      { "type": "item", "code": "clothes-shoulder-druid-cloak" },
+      { "type": "item", "code": "clothes-upperbody-druid-robe" },
+      { "type": "item", "code": "clothes-lowerbody-druid-pants" },
+      { "type": "item", "code": "clothes-foot-druid-boots" },
+      { "type": "item", "code": "clothes-hand-druid-gloves" }
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "fighter",
+    "traits": ["focused","hardy","fleetfooted","weaponmaster","farsighted"],
+    "gear": [
+      { "type": "item", "code": "clothes-shoulder-fighter-armor" },
+      { "type": "item", "code": "clothes-upperbody-fighter-armor" },
+      { "type": "item", "code": "clothes-lowerbody-fighter-leggings" },
+      { "type": "item", "code": "clothes-foot-fighter-boots" },
+      { "type": "item", "code": "clothes-hand-fighter-gauntlets" }
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "monk",
+    "traits": ["focused","fleetfooted","martialartist","farsighted","claustrophobic"],
+    "gear": [
+      { "type": "item", "code": "clothes-shoulder-monk-garb" },
+      { "type": "item", "code": "clothes-upperbody-monk-robe" },
+      { "type": "item", "code": "clothes-lowerbody-monk-pants" },
+      { "type": "item", "code": "clothes-foot-monk-sandals" },
+      { "type": "item", "code": "clothes-hand-monk-gloves" }
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "paladin",
+    "traits": ["soldier","hardy","merciless","ravenous","farsighted","heavyhanded"],
+    "gear": [
+      { "type": "item", "code": "clothes-upperbody-paladin-plate" },
+      { "type": "item", "code": "clothes-lowerbody-paladin-leggings" },
+      { "type": "item", "code": "clothes-foot-paladin-boots" },
+      { "type": "item", "code": "clothes-emblem-paladin-crest" },
+      { "type": "item", "code": "clothes-waist-paladin-belt" }
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "ranger",
+    "traits": ["focused","resourceful","fleetfooted","bowyer","farsighted","outdoor"],
+    "gear": [
+      { "type": "item", "code": "clothes-head-ranger-cape" },
+      { "type": "item", "code": "clothes-shoulder-ranger-poncho" },
+      { "type": "item", "code": "clothes-upperbody-ranger-shirt" },
+      { "type": "item", "code": "clothes-upperbodyover-ranger-coat" },
+      { "type": "item", "code": "clothes-lowerbody-ranger-leggings" },
+      { "type": "item", "code": "clothes-foot-ranger-boots" },
+      { "type": "item", "code": "clothes-face-ranger-mask" },
+      { "type": "item", "code": "clothes-hand-ranger-gloves" }
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "rogue",
+    "traits": ["stealthy","pilferer","furtive","agile","narrow‑vision","claustrophobic"],
+    "gear": [
+      { "type": "item", "code": "clothes-shoulder-rogue-hood" },
+      { "type": "item", "code": "clothes-upperbody-rogue-leather" },
+      { "type": "item", "code": "clothes-lowerbody-rogue-pants" },
+      { "type": "item", "code": "clothes-foot-rogue-boots" },
+      { "type": "item", "code": "clothes-hand-rogue-gloves" }
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "wizard",
+    "traits": ["intelligent","arcane","focused","fleetfooted","farsighted"],
+    "gear": [
+      { "type": "item", "code": "clothes-shoulder-wizard-robe" },
+      { "type": "item", "code": "clothes-upperbody-wizard-garb" },
+      { "type": "item", "code": "clothes-lowerbody-wizard-pants" },
+      { "type": "item", "code": "clothes-foot-wizard-sandals" },
+      { "type": "item", "code": "clothes-hand-wizard-gloves" }
+    ]
+  },
+  {
+    "enabled": true,
+    "code": "clockwork",
+    "traits": ["clockwork","mechanical","precise","hardy","farsighted"],
+    "gear": [
+      { "type": "item", "code": "clothes-shoulder-clockwork-plate" },
+      { "type": "item", "code": "clothes-upperbody-clockwork-chestplate" },
+      { "type": "item", "code": "clothes-lowerbody-clockwork-leggings" },
+      { "type": "item", "code": "clothes-foot-clockwork-boots" },
+      { "type": "item", "code": "clothes-hand-clockwork-grips" }
+    ]
+  }
+]

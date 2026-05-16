@@ -1,0 +1,63 @@
+[
+  {
+    "code": "arcanemagic",
+    "type": "positive",
+    "attributes": {}
+  },
+  {
+    "code": "craftwand",
+    "type": "positive",
+    "attributes": {}
+  },
+  {
+    "code": "calouses",
+    "type": "positive",
+    "attributes": {}
+  },
+  {
+    "code": "divinemagic",
+    "type": "positive",
+    "attributes": {}
+  },
+  {
+    "code": "fleetfooted",
+    "type": "positive",
+    "attributes": {
+      "walkspeed": 0.1
+    }
+  },
+  {
+    "code": "resourceful",
+    "type": "positive",
+    "attributes": {
+      "animalLootDropRate": 0.1,
+      "animalHarvestingTime": -0.25
+    }
+  },
+  {
+    "code": "toughness",
+    "type": "positive",
+    "attributes": {
+      "maxhealthExtraPoints": 5
+    }
+  },
+  {
+    "code": "trackless",
+    "type": "positive",
+    "attributes": {
+      "animalSeekingRange": -0.35
+    }
+  },
+  {
+    "code": "woodlandstride",
+    "type": "positive",
+    "attributes": {
+    }
+  },
+  {
+    "code": "focused",
+    "type": "positive",
+    "attributes": {
+    }
+  }
+]
